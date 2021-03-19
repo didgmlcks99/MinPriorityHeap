@@ -21,6 +21,10 @@ void extractMin(Element *a, int &i);
 void minHeapify(Element *a, int size, int i);
 void print(Element *a, int size);
 
+/*
+* This function start the program by showing the menu
+* until the user chooses to quit program.
+*/
 int main(){
     Element heap[capacity];
     int count = 0;
@@ -64,6 +68,9 @@ int main(){
     return 0;
 }
 
+/*
+* This function prints the menu.
+*/
 void printMenu(){
     cout << "*********** MENU ****************" << endl;
     cout << "I : Insert new element into queue." << endl;
@@ -73,15 +80,23 @@ void printMenu(){
     cout << "Q : Quit" << endl;
 }
 
+/*
+* This function gets the user input
+* for the chosen menu.
+*/
 char chooseMenu(){
     char input;
-    
+
     cout << endl << "Choose menu: ";
     cin >> input;
 
     return input;
 }
 
+/*
+* This function gets the user input for
+* new element insetion.
+*/
 Element scanElement(){
     Element newElement;
     
@@ -101,6 +116,10 @@ Element scanElement(){
     return newElement;
 }
 
+/*
+* This function gets new element
+* then adds to heap.
+*/
 void insert(Element *a, int &i, Element newElement){
     a[++i] = newElement;
 
@@ -109,6 +128,10 @@ void insert(Element *a, int &i, Element newElement){
     cout << "=> New element [" << newElement.name << ", " << newElement.score << "] is inserted." << endl << endl << endl;
 }
 
+/*
+* This function gets the user input for
+* the chosen index element to be decreased.
+*/
 void decreaseScore(Element *a, int count){
     int index;
     float score;
@@ -128,6 +151,12 @@ void decreaseScore(Element *a, int count){
     }
 }
 
+/*
+* This function gets the new score for decreasion.
+* It the sorts according to the new score.
+* If the new score by user input is larger then
+* doesn't implement the function.
+*/
 int decrease(Element *a, int i, float newScore){
     int index = i;
     
@@ -145,12 +174,20 @@ int decrease(Element *a, int i, float newScore){
     return 1;
 }
 
+/*
+* This function swaps two elements.
+*/
 void swap(Element *a, Element *b){
     Element tmp = *a;
     *a = *b;
     *b = tmp;
 }
 
+/*
+* This function deletes element in index #1,
+* then bring up the last element to index #1,
+* which then sorting(minHeapify) happens.
+*/
 void extractMin(Element *a, int &i){
     Element min;
     if(i < 1){
@@ -164,6 +201,12 @@ void extractMin(Element *a, int &i){
     cout << "=> [" << min.name << ", " << min.score << "] is deleted." << endl << endl << endl;
 }
 
+/*
+* This function compares current element with
+* its parent element to sort order.
+* The parent score should always be smaller
+* than its child score.
+*/
 void minHeapify(Element *a, int size, int i){
     int leftIndex = 2*i;
     int rightIndex = (2*i)+1;
@@ -186,6 +229,10 @@ void minHeapify(Element *a, int size, int i){
     }
 }
 
+/*
+* This function prints out current elements
+* in the heap.
+*/
 void print(Element *a, int size){
     for(int i=1; i<=size; i++){
         cout << "[" << a[i].name << ", " << a[i].score << "] ";
