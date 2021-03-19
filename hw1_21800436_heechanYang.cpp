@@ -1,9 +1,15 @@
 #include <iostream>
 #include <cstring>
+
 #define capacity 31
-// #include "MinPriority.h"
 
 using namespace std;
+
+/*
+* Overall, this program allows Min Priority Heap to work.
+* Wrong type of input in each input question will either 
+* allow the users to type again, or terminate the current menu.
+*/
 
 /*
 * This structure is a type for
@@ -114,8 +120,18 @@ Element scanElement(){
         }
     }
     
-    cout << "Enter key value of element: ";
-    cin >> newElement.score; 
+    string strScore;
+    while(1){
+        cout << "Enter key value of element: ";
+        cin >> strScore;
+
+        try{
+            newElement.score = stof(strScore);
+            break;
+        }catch(exception e){
+            cout << "=> need to input a float type" << endl << endl;
+        }
+    }
 
     return newElement;
 }
@@ -140,15 +156,34 @@ void decreaseScore(Element *a, int count){
     int index;
     float score;
 
-    cout << "Enter index of element: ";
-    cin >> index;
+    string strIndex;
+    while(1){
+        cout << "Enter index of element: ";
+        cin >> strIndex;
+
+        try{
+            index = stod(strIndex);
+            break;
+        }catch(exception e){
+            cout << "=> need to input a integer type" << endl << endl;
+        }
+    }
 
     if(index > count){
         cout << "=> no data in index #" << index << endl << endl << endl;
     }else{
-        cout << "Enter new key value: ";
-        cin >> score;
+        string strScore;
+        while(1){
+            cout << "Enter key value of element: ";
+            cin >> strScore;
 
+            try{
+                score = stof(strScore);
+                break;
+            }catch(exception e){
+                cout << "=> need to input a float type" << endl << endl;
+            }
+        }   
         if(decrease(a, index, score)==1){
             cout << "=> index #" << index << " element decreased to " << score << endl << endl << endl;
         }
