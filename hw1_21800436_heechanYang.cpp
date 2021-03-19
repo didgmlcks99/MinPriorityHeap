@@ -1,11 +1,12 @@
 #include <iostream>
+#include <cstring>
 #define capacity 31
 // #include "MinPriority.h"
 
 using namespace std;
 
 typedef struct{
-    char name[10];
+    string name;
     float score;
 }Element;
 
@@ -74,6 +75,7 @@ void printMenu(){
 
 char chooseMenu(){
     char input;
+    
     cout << endl << "Choose menu: ";
     cin >> input;
 
@@ -83,9 +85,16 @@ char chooseMenu(){
 Element scanElement(){
     Element newElement;
     
-    cout << "Enter name of element: ";
-    cin >> newElement.name;
-
+    while(1){
+        cout << "Enter name of element: ";
+        cin >> newElement.name;
+        if(newElement.name.length() > 10){
+            cout << "=> name too long, size should be below 10" << endl << endl;
+        }else{
+            break;
+        }
+    }
+    
     cout << "Enter key value of element: ";
     cin >> newElement.score; 
 
