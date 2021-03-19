@@ -5,6 +5,10 @@
 
 using namespace std;
 
+/*
+* This structure is a type for
+* the element [name, score].
+*/
 typedef struct{
     string name;
     float score;
@@ -154,7 +158,7 @@ void decreaseScore(Element *a, int count){
 /*
 * This function gets the new score for decreasion.
 * It the sorts according to the new score.
-* If the new score by user input is larger then
+* If the new score by user input is larger than
 * doesn't implement the function.
 */
 int decrease(Element *a, int i, float newScore){
